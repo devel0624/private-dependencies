@@ -29,8 +29,8 @@ jobs:
         run : mvn sonar:sonar -Dsonar.projectKey=environmet_practice -Dsonar.host.url=${{secrets.SONAR_HOST}} -Dsonar.login=${{secrets.SONAR_TOKEN}}
 
 #mvn clean verify sonar:sonar \
-#-Dsonar.projectKey=environmet_practice \
-#-Dsonar.projectName='environmet_practice' \
+#-Dsonar.projectKey=environment_practice \
+#-Dsonar.projectName='environment_practice' \
 #-Dsonar.host.url=http://133.186.241.167:9000 \
 #-Dsonar.token=sqp_3241867ef988ccf69bca41a38ea9e27fbea17e05
 #        sqp_3241867ef988ccf69bca41a38ea9e27fbea17e05
