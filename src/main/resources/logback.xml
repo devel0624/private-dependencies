@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}  %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--&lt;!&ndash;     LogNCrashHttpAppender 선언&ndash;&gt;-->
+<!--    <appender name="logNCrashHttp" class="com.toast.java.logncrash.logback.LogNCrashHttpAppender">-->
+<!--        <appKey value="nMWnKdBvAFvUW8XL"/>-->
+<!--        <logSource value="운영"/>-->
+<!--        <version value="1.0.0"/>-->
+<!--        <logType value="감사 로그"/>-->
+<!--        <debug value="true"/>-->
+<!--        <category value="로그 서비스"/>-->
+<!--        <errorCodeType value="action"/>-->
+<!--    </appender>-->
+<!--&lt;!&ndash;     LogNCrashHttpAppender를 포함한 AsyncAppender 선언&ndash;&gt;-->
+<!--    <appender name="LNCS-APPENDER" class="ch.qos.logback.classic.AsyncAppender">-->
+<!--        &lt;!&ndash; Logback의 AsyncAppender 옵션 &ndash;&gt;-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>error</level>-->
+<!--        </filter>-->
+<!--        <includeCallerData value="false"/>-->
+<!--        <queueSize value="2048"/>-->
+<!--        <neverBlock value="true"/>-->
+<!--        <maxFlushTime value="60000"/>-->
+<!--        <appender-ref ref="logNCrashHttp"/>-->
+<!--    </appender>-->
+
+    <appender name="logNCrashHttp" class="com.toast.java.logncrash.logback.LogNCrashHttpAppender">
+        <param name="appKey" value="nMWnKdBvAFvUW8XL"/>
+        <param name="host" value="test"/>
+        <param name="logSource" value="testLog"/>
+        <param name="version" value="1.0.0"/>
+        <param name="logType" value="testLog"/>
+        <param name="debug" value="false"/>
+        <param name="category" value="name"/>
+        <param name="errorCodeType" value="action"/>
+    </appender>
+
+    <appender name="logc" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- Logback의 AsyncAppender 옵션 -->
+        <param name="includeCallerData" value="false"/>
+        <param name="queueSize" value="2048"/>
+        <param name="neverBlock" value="true"/>
+        <param name="maxFlushTime" value="60000"/>
+        <!-- Log & Crash Logback SDK의 LogNCrashHttpAppender 옵션 -->
+
+        <appender-ref ref="logNCrashHttp"/>
+    </appender>
+
+    <logger name="user-logger" additivity="false">
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="logc"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
+
