@@ -5,13 +5,36 @@
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}  %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} %msg%n</pattern>
         </encoder>
     </appender>
 
-<!--&lt;!&ndash;     LogNCrashHttpAppender 선언&ndash;&gt;-->
+    <!--     LogNCrashHttpAppender 선언-->
 <!--    <appender name="logNCrashHttp" class="com.toast.java.logncrash.logback.LogNCrashHttpAppender">-->
-<!--        <appKey value="nMWnKdBvAFvUW8XL"/>-->
+<!--        <appKey>nMWnKdBvAFvUW8XL</appKey>-->
+<!--        <logSource>운영</logSource>-->
+<!--        <version>1.0.0</version>-->
+<!--        <logType>감사 로그</logType>-->
+<!--        <debug>true</debug>-->
+<!--        <category>로그 서비스</category>-->
+<!--        <errorCodeType>action</errorCodeType>-->
+<!--    </appender>-->
+
+<!--    &lt;!&ndash;     LogNCrashHttpAppender를 포함한 AsyncAppender 선언&ndash;&gt;-->
+<!--    <appender name="LNCS-APPENDER" class="ch.qos.logback.classic.AsyncAppender">-->
+<!--        &lt;!&ndash; Logback의 AsyncAppender 옵션 &ndash;&gt;-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>error</level>-->
+<!--        </filter>-->
+<!--        <includeCallerData>false</includeCallerData>-->
+<!--        <queueSize>2048</queueSize>-->
+<!--        <neverBlock>true</neverBlock>-->
+<!--        <maxFlushTime>60000</maxFlushTime>-->
+<!--        <appender-ref ref="logNCrashHttp"/>-->
+<!--    </appender>-->
+
+<!--    <appender name="logNCrashHttp" class="com.toast.java.logncrash.logback.LogNCrashHttpAppender">-->
+<!--        <appKey value="앱키"/>-->
 <!--        <logSource value="운영"/>-->
 <!--        <version value="1.0.0"/>-->
 <!--        <logType value="감사 로그"/>-->
@@ -19,11 +42,11 @@
 <!--        <category value="로그 서비스"/>-->
 <!--        <errorCodeType value="action"/>-->
 <!--    </appender>-->
-<!--&lt;!&ndash;     LogNCrashHttpAppender를 포함한 AsyncAppender 선언&ndash;&gt;-->
+<!--    &lt;!&ndash; LogNCrashHttpAppender를 포함한 AsyncAppender 선언 &ndash;&gt;-->
 <!--    <appender name="LNCS-APPENDER" class="ch.qos.logback.classic.AsyncAppender">-->
 <!--        &lt;!&ndash; Logback의 AsyncAppender 옵션 &ndash;&gt;-->
 <!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
-<!--            <level>error</level>-->
+<!--            <level>INFO</level>-->
 <!--        </filter>-->
 <!--        <includeCallerData value="false"/>-->
 <!--        <queueSize value="2048"/>-->
@@ -58,7 +81,7 @@
     </logger>
 
     <root level="error">
-        <appender-ref ref="logc"/>
+        <appender-ref ref="LNCS-APPENDER"/>
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
