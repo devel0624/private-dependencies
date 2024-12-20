@@ -28,6 +28,16 @@
         <tag/>
         <url/>
     </scm>
+
+    <repositories>
+        <repository>
+            <id>logncrash</id>
+            <name>custom-repo</name>
+            <url>https://raw.githubusercontent.com/devel0624/private-dependencies/refs/heads/main/</url>
+        </repository>
+    </repositories>
+
+
     <properties>
         <java.version>21</java.version>
     </properties>
